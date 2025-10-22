@@ -1,21 +1,32 @@
+import javax.swing.JOptionPane;
 
 public class Maikls extends GalvenaisTels {
 
-	Double BraukPalenin;
+	double BraukPalenin;
 	
-	public Maikls(Double BraukPalenin) {
-		
-		BraukPalenin=Speja();
+	public Maikls(double BraukPalenin) {
+		BraukPalenin=10.00;
 	}
 	
-public Double Speja() {
-		
+	
+	public double BraukPalenin() {
 		return 10.00;
 	}
 	
-	public Double SpejuStiprin(Double Speja) {
+	public double ReturnSpeja() {
+		return BraukPalenin;
+	}
+	
+	public double SpejuStiprin() {
 		
-		return Speja+5.00;
+		if(BraukPalenin!=30.00) {
+			JOptionPane.showMessageDialog(null, "Maksimālais limits spējai atīstīts","Attīstījums",JOptionPane.INFORMATION_MESSAGE);
+			BraukPalenin+=2.00;
+		}else {
+			JOptionPane.showMessageDialog(null, "Spēja ir maksimāli attīstīta!","Informācija",JOptionPane.INFORMATION_MESSAGE);
+		}
+		
+		return BraukPalenin;
 	}
 	
 }
