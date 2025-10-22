@@ -2,18 +2,26 @@ import javax.swing.JOptionPane;
 
 public class Trevors extends GalvenaisTels {
 
-	Double SarkanDumi;
+	double SarkanDumi;
 	
-	public Trevors(Double SarkanDumi) {
+	public Trevors(double SarkanDumi) {
 		
 		SarkanDumi=10.00;
 	}
 	
-	public Double SpejuStiprin(Double SarkanDumi) {
+	public double SarkanDumi() {
+		return 10.00;
+	}
+	
+	public double ReturnSpeja() {
+		return SarkanDumi;
+	}
+	
+	public double SpejuStiprin() {
 		
 		if(SarkanDumi!=30.00) {
 			JOptionPane.showMessageDialog(null, "Maksimālais limits spējai atīstīts","Attīstījums",JOptionPane.INFORMATION_MESSAGE);
-			SarkanDumi+=5.00;
+			SarkanDumi+=2.00;
 		}else {
 			JOptionPane.showMessageDialog(null, "Spēja ir maksimāli attīstīta!","Informācija",JOptionPane.INFORMATION_MESSAGE);
 		}
