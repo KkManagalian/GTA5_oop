@@ -1,21 +1,29 @@
+import javax.swing.JOptionPane;
 
 public class Frenklins extends GalvenaisTels {
 
-	Double TemePalenin;
+	private Double TemePalenin;
 	
 	public Frenklins(Double TemePalenin) {
 		
-		TemePalenin=Speja();
+		TemePalenin=TemePalenin();
 	}
 	
-public Double Speja() {
+	public Double TemePalenin() {
 		
 		return 10.00;
 	}
 	
-	public Double SpejuStiprin(Double Speja) {
+	public Double SpejuStiprin(Double Temepalenin) {
 		
-		return Speja+5.00;
+		if(TemePalenin!=30.00) {
+			JOptionPane.showMessageDialog(null, "Maksimālais limits spējai atīstīts","Attīstījums",JOptionPane.INFORMATION_MESSAGE);
+			TemePalenin+=5.00;
+		}else {
+			JOptionPane.showMessageDialog(null, "Spēja ir maksimāli attīstīta!","Informācija",JOptionPane.INFORMATION_MESSAGE);
+		}
+		
+		return TemePalenin;
 	}
 	
 }
