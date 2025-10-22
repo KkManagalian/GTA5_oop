@@ -43,20 +43,15 @@ public class GrandTheftAutoV {
 				if(izvelesID == 0) {
 					persona = new GalvenaisTels();
 					//System.out.println(persona.getVards()+" "+persona.getKurss());
-					String v = GalvenaisTels.virknesParbaude("Studentu vārdu ievade", "Džefrijs");
-					if(v == null)
+					String m = GalvenaisTels.virknesParbaude("Mašīnas nosaukumu ievade", "Bravado Buffalo");
+					if(m == null)
 						break;
-					persona.setVards(v);
+					persona.setMasina(m);
 					String u = GalvenaisTels.virknesParbaude("Studentu uzvārdu ievade", "Epstīns");
 					if(u == null)
 						break;
-					persona.setUzvards(u);
-					
-					String pk = "";
-					do {
-						pk = JOptionPane.showInputDialog("Ievadi personas kodu");
-					}while(pk == null || !Pattern.matches("^[0-9]{6}-[0-9]{5}$", pk));
-						persona.setPersKods(pk);
+						int ieroci = JOptionPane.showInputDialog("Ievadi ieroču skaitu", 1);
+						persona.setIeroci(ieroci);
 						
 						String talr = "";
 						do {

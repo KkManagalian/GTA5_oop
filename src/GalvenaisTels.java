@@ -28,13 +28,13 @@ public class GalvenaisTels implements Serializable, Comparable<GalvenaisTels>{
 	public int getIeroci() {
 		return ieroci;
 	}
-	public void setVards(String masinas) {
+	public void setMasina(String masinas) {
 		this.masinas = masinas;
 	}
-	public void setUzvards(double nauda) {
+	public void setNauda(double nauda) {
 		this.nauda= nauda;
 	}
-	public void setPersKods(int ieroci) {
+	public void setIeroci(int ieroci) {
 		this.ieroci = ieroci;
 	}
 		public static String virknesParbaude(String zinojums, String noklusejums) {
