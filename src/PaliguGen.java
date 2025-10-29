@@ -7,7 +7,7 @@ public class PaliguGen {
 	static Random rand = new Random();
 	
 	public static String Vardi() {
-		String [] vardi = {"Elizabete","Jānis","Miķelis","Rodricks","Ingars","Gustmans","Melda"};
+		String [] vardi = {"Elizabete","Jānis","Miķelis","Rodricks","Ingars","Guzmans","Melda"};
 		
 		return vardi[rand.nextInt(7)];
 	}
