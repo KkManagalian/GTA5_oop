@@ -80,11 +80,14 @@ public class GrandTheftAutoV {
 							ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 					JOptionPane.showMessageDialog(ta, sp, "Riteņi",
 							JOptionPane.PLAIN_MESSAGE);
-				}else {
-					JOptionPane.showMessageDialog(null, "Sarakstā nav neviens ritenis!", "Brīdinājums", JOptionPane.WARNING_MESSAGE);
+				}else{
+					JOptionPane.showMessageDialog(null, "Sarakstā nav neviens cilvēks!", "Brīdinājums", JOptionPane.WARNING_MESSAGE);
 				}
 				break;
-			case 5:
+			case 3:
+				//Valter, te izveido case, lai var darīt misijas!
+				break;
+			case 4:
 				JOptionPane.showMessageDialog(null, "Programma apturēta!", "Brīdinājums", JOptionPane.WARNING_MESSAGE);
 				break;
 			}
