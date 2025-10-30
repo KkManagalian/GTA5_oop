@@ -24,7 +24,7 @@ public class GalvenaisTels implements Serializable, Comparable<GalvenaisTels>{
 		private String masina;
 		private int ieroci = 1;
 		private double nauda;
-		
+		private int izvelesID;
 		public GalvenaisTels() { };
 		
 		public String getMasinas() {
@@ -36,6 +36,15 @@ public class GalvenaisTels implements Serializable, Comparable<GalvenaisTels>{
 		public int getIeroci() {
 			return ieroci;
 		}
+		public String getIzvelesID() {
+			if(izvelesID == 0) {
+				return "Frenklins";
+			}else if(izvelesID == 1){
+				return "Trevors";
+			}else {
+				return "Maikls";
+			}
+		}
 		public void setMasina(String masina) {
 			this.masina = masina;
 		}
@@ -46,7 +55,8 @@ public class GalvenaisTels implements Serializable, Comparable<GalvenaisTels>{
 			this.ieroci = ieroci;
 		}
 		
-		public GalvenaisTels(int ieroci, double nauda, String masina) {
+		public GalvenaisTels(int izvelesID, int ieroci, double nauda, String masina) {
+			this.izvelesID = izvelesID;
 			this.ieroci = ieroci;
 			this.nauda = nauda;
 			this.masina = masina;
@@ -90,8 +100,8 @@ public class GalvenaisTels implements Serializable, Comparable<GalvenaisTels>{
 			static int personasIzvele(ArrayList<Object> personas) {
 				String[] Saraksts = new String[personas.size()];
 				for (int i = 0; i < personas.size(); i++) {
-				Saraksts[i] = (((GalvenaisTels)personas.get(i)).getMasinas())+" "
-				+(((GalvenaisTels)personas.get(i)).getNauda())+" EUR";
+				Saraksts[i] = (((GalvenaisTels)personas.get(i)).getIzvelesID())+" "
+				+(((GalvenaisTels)personas.get(i)).getNauda())+" $";
 				}
 				String izveletais = (String)JOptionPane.showInputDialog(null, "Izvēlies riteni: ", "Izvēle", JOptionPane.QUESTION_MESSAGE, null, Saraksts, Saraksts[0]);
 				return Arrays.asList(Saraksts).indexOf(izveletais);

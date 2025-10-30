@@ -38,7 +38,7 @@ public class GrandTheftAutoV {
 				
 				
 				if(izvelesID == 0) {
-					persona = new GalvenaisTels(ieroci, nauda, masina);
+					persona = new GalvenaisTels(izvelesID, ieroci, nauda, masina);
 				}
 				personas.add(persona);	
 				break;
