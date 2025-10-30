@@ -27,7 +27,7 @@ public class GalvenaisTels implements Serializable, Comparable<GalvenaisTels>{
 		private int izvelesID;
 		public GalvenaisTels() { };
 		
-		public String getMasinas() {
+		public String getMasina() {
 			return masina;
 		}
 		public double getNauda() {
@@ -41,7 +41,7 @@ public class GalvenaisTels implements Serializable, Comparable<GalvenaisTels>{
 				return "Frenklins";
 			}else if(izvelesID == 1){
 				return "Trevors";
-			}else {
+			}else{
 				return "Maikls";
 			}
 		}
@@ -62,7 +62,12 @@ public class GalvenaisTels implements Serializable, Comparable<GalvenaisTels>{
 			this.masina = masina;
 		}
 		
-		
+		public String izvadit() {
+			return "Personas vārds: "+getIzvelesID()+
+					"\nNaudas daudzums: $"+getNauda()+
+					"\nMašīnas modelis: "+getMasina()+
+					"\nIeroču daudzums: "+getIeroci();
+		}
 		
 		
 			public static String virknesParbaude(String zinojums, String noklusejums) {
@@ -110,7 +115,7 @@ public class GalvenaisTels implements Serializable, Comparable<GalvenaisTels>{
 	
 	@Override
 	public int compareTo(GalvenaisTels s) {
-		return this.getMasinas().compareTo(s.getMasinas());
+		return this.getMasina().compareTo(s.getMasina());
 	}
 	
 	

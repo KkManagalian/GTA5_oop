@@ -8,12 +8,16 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.ScrollPaneConstants;
 
+
 public class GrandTheftAutoV {
 
 	public static void main(String[] args) {
 		String izvele;
 		int izvelesID;
-		String[] darbibas = {"Izvēlies personu", "Personu saraksts", "Dzēst personu", "Izsaukt metodi", "Aizvērt programmu"};
+		boolean unikalsF = false;
+		boolean unikalsT = false;
+		boolean unikalsM = false;
+		String[] darbibas = {"Izvēlies personu", "Dzēst personu", "Personu saraksts", "Sākt misiju", "Aizvērt programmu"};
 		String[] veidi = {"Frenklins", "Trevors", "Maikls"};
 		String[] atbilde = {"Jā", "Nē"};
 		ArrayList<Object> personas = new ArrayList<>();
@@ -25,9 +29,13 @@ public class GrandTheftAutoV {
 			izvelesID = Arrays.asList(darbibas).indexOf(izvele);
 			switch(izvelesID) {
 			case 0:
-				izvele = (String)JOptionPane.showInputDialog(null, "Kuru personu gribi izvēlēties?", "Izvēlne", JOptionPane.QUESTION_MESSAGE, null, veidi, veidi[0]);
+				izvele = (String)JOptionPane.showInputDialog(null, "Kuru personu gribi izvēlēties? (var izveidot tikai 1 no katra)", "Izvēlne", JOptionPane.QUESTION_MESSAGE, null, veidi, veidi[0]);
 				if(izvele == null)
 					break;
+				if(unikalsF == true && unikalsT == true && unikalsM == true) {
+					JOptionPane.showMessageDialog(null, "Persona jau eksistē!", "Brīdinājums", JOptionPane.WARNING_MESSAGE);
+				}else{
+					
 				izvelesID = Arrays.asList(veidi).indexOf(izvele);
 				
 				String masina = GalvenaisTels.virknesParbaude("Ievadi mašīnas nosaukumu", "Bravado Buffalo");
@@ -39,8 +47,16 @@ public class GrandTheftAutoV {
 				
 				if(izvelesID == 0) {
 					persona = new GalvenaisTels(izvelesID, ieroci, nauda, masina);
+					unikalsF = true;
+				}else if(izvelesID == 1) {
+					persona = new GalvenaisTels(izvelesID, ieroci, nauda, masina);
+					unikalsT = true;
+				}else{
+					persona = new GalvenaisTels(izvelesID, ieroci, nauda, masina);
+					unikalsM = true;
 				}
 				personas.add(persona);	
+				}
 				break;
 			case 1:
 				if(personas.size()>0) {
@@ -49,6 +65,23 @@ public class GrandTheftAutoV {
 					JOptionPane.showMessageDialog(null, "Persona tika izdzēsta!", "Brīdinājums", JOptionPane.WARNING_MESSAGE);
 				}else {
 					JOptionPane.showMessageDialog(null, "Sarakstā nav neviens!", "Brīdinājums", JOptionPane.WARNING_MESSAGE);
+				}
+				break;
+			case 2:
+				if(personas.size()>0) {
+					String str = "Personu skaits: "+personas.size()+"\n_______________________________\n";
+					for(int i = 0; i <personas.size(); i++) {
+						str += ((GalvenaisTels)personas.get(i)).izvadit()+"\n_______________________________\n";
+					}
+					JTextArea ta = new JTextArea (str, 10, 40);
+					ta.setEditable(false);
+					JScrollPane sp = new JScrollPane(ta);
+					sp.setVerticalScrollBarPolicy(
+							ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+					JOptionPane.showMessageDialog(ta, sp, "Riteņi",
+							JOptionPane.PLAIN_MESSAGE);
+				}else {
+					JOptionPane.showMessageDialog(null, "Sarakstā nav neviens ritenis!", "Brīdinājums", JOptionPane.WARNING_MESSAGE);
 				}
 				break;
 			case 5:
