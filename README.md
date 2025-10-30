@@ -4,7 +4,7 @@
 ##Ir iespējams veikt misijas, izvēloties no vairākiem palīgiem, kuri atkarībā no viņu parsmēm, prasīs vairāk vai mazāk naudas.
 
 ### Ir pabeigts:
-### Personu izveidošana [x]
+### Personu izveidošana [X]
 ### Personu dzēšana [x]
 ### Personu apskatīšana [x]
 ### Misiju veikšana [ ]
