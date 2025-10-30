@@ -32,7 +32,7 @@ public class GrandTheftAutoV {
 				izvele = (String)JOptionPane.showInputDialog(null, "Kuru personu gribi izvēlēties? (var izveidot tikai 1 no katra)", "Izvēlne", JOptionPane.QUESTION_MESSAGE, null, veidi, veidi[0]);
 				if(izvele == null)
 					break;
-				if(unikalsF == true && unikalsT == true && unikalsM == true) {
+				if(unikalsF == true && izvele == "Frenklins" || izvele == "Trevors" && unikalsT == true || izvele == "Maikls" && unikalsM == true) {
 					JOptionPane.showMessageDialog(null, "Persona jau eksistē!", "Brīdinājums", JOptionPane.WARNING_MESSAGE);
 				}else{
 					
