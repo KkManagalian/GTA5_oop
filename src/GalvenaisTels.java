@@ -1,4 +1,6 @@
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.regex.Pattern;
 
 import javax.swing.JOptionPane;
@@ -18,17 +20,15 @@ public class GalvenaisTels implements Serializable, Comparable<GalvenaisTels>{
 		
 		
 	}
-
-	//Attribūti
 	
-		private String masinas;
+		private String masina;
 		private int ieroci = 1;
 		private double nauda;
 		
 		public GalvenaisTels() { };
 		
 		public String getMasinas() {
-			return masinas;
+			return masina;
 		}
 		public double getNauda() {
 			return nauda;
@@ -36,8 +36,8 @@ public class GalvenaisTels implements Serializable, Comparable<GalvenaisTels>{
 		public int getIeroci() {
 			return ieroci;
 		}
-		public void setMasina(String masinas) {
-			this.masinas = masinas;
+		public void setMasina(String masina) {
+			this.masina = masina;
 		}
 		public void setNauda(double nauda) {
 			this.nauda= nauda;
@@ -45,6 +45,16 @@ public class GalvenaisTels implements Serializable, Comparable<GalvenaisTels>{
 		public void setIeroci(int ieroci) {
 			this.ieroci = ieroci;
 		}
+		
+		public GalvenaisTels(int ieroci, double nauda, String masina) {
+			this.ieroci = ieroci;
+			this.nauda = nauda;
+			this.masina = masina;
+		}
+		
+		
+		
+		
 			public static String virknesParbaude(String zinojums, String noklusejums) {
 				String virkne;
 				do {
@@ -77,7 +87,15 @@ public class GalvenaisTels implements Serializable, Comparable<GalvenaisTels>{
 					}
 				}
 			}
-	
+			static int personasIzvele(ArrayList<Object> personas) {
+				String[] Saraksts = new String[personas.size()];
+				for (int i = 0; i < personas.size(); i++) {
+				Saraksts[i] = (((GalvenaisTels)personas.get(i)).getMasinas())+" "
+				+(((GalvenaisTels)personas.get(i)).getNauda())+" EUR";
+				}
+				String izveletais = (String)JOptionPane.showInputDialog(null, "Izvēlies riteni: ", "Izvēle", JOptionPane.QUESTION_MESSAGE, null, Saraksts, Saraksts[0]);
+				return Arrays.asList(Saraksts).indexOf(izveletais);
+		}
 	
 	
 	@Override

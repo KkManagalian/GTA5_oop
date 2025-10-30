@@ -38,29 +38,17 @@ public class GrandTheftAutoV {
 				
 				
 				if(izvelesID == 0) {
-					persona = new GalvenaisTels();
-					//System.out.println(persona.getVards()+" "+persona.getKurss());
-					String m = GalvenaisTels.virknesParbaude("Mašīnas nosaukumu ievade", "Bravado Buffalo");
-					if(m == null)
-						break;
-					persona.setMasina(m);
-					String u = GalvenaisTels.virknesParbaude("Studentu uzvārdu ievade", "Epstīns");
-					if(u == null)
-						break;
-						ieroci = Integer.parseInt(JOptionPane.showInputDialog("Ievadi ieroču skaitu", 1));
-						persona.setIeroci(ieroci);
-						
-							personas.add(persona);	
-					break;
-				break;
+					persona = new GalvenaisTels(ieroci, nauda, masina);
 				}
+				personas.add(persona);	
+				break;
 			case 1:
 				if(personas.size()>0) {
-					int ritID = GalvenaisTels.personasIzvele(persona);
-					personas.remove(ritID);
-					JOptionPane.showMessageDialog(null, "Ritenis ir veiksmīgi dzēsts!", "Brīdinājums", JOptionPane.WARNING_MESSAGE);
+					int ID = GalvenaisTels.personasIzvele(personas);
+					personas.remove(ID);
+					JOptionPane.showMessageDialog(null, "Persona tika izdzēsta!", "Brīdinājums", JOptionPane.WARNING_MESSAGE);
 				}else {
-					JOptionPane.showMessageDialog(null, "Sarakstā nav neviens ritenis!", "Brīdinājums", JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Sarakstā nav neviens!", "Brīdinājums", JOptionPane.WARNING_MESSAGE);
 				}
 				break;
 			case 5:
@@ -69,6 +57,4 @@ public class GrandTheftAutoV {
 			}
 		}while(izvelesID != 5);
 	}
-	}
-
 }
