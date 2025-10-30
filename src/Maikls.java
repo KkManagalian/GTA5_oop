@@ -2,10 +2,14 @@ import javax.swing.JOptionPane;
 
 public class Maikls extends GalvenaisTels {
 
-	double BraukPalenin;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private double BraukPalenin;
 	
 	public Maikls(double BraukPalenin) {
-		BraukPalenin=10.00;
+		this.BraukPalenin=BraukPalenin();
 	}
 	
 	

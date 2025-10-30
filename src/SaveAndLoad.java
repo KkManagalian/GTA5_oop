@@ -12,14 +12,14 @@ import javax.swing.ScrollPaneConstants;
 
 public class SaveAndLoad {
 	
-	public static void saglabat(GalvenaisTels persona) {
+	public static void saglabat(String info) {
 	try {	
 		
 		String failaNosaukums = (String)JOptionPane.showInputDialog(null, "Ievadi faila nosaukumu","Fails1");
 		
 		FileWriter fw = new FileWriter(failaNosaukums, true);
 		PrintWriter pw = new PrintWriter(fw);
-		pw.println();
+		pw.println(info);
 		pw.println("++++++++++++++++++++++++++\n");
 		pw.close();
 		JOptionPane.showMessageDialog(null, "Ierakstīts failā: "+failaNosaukums);

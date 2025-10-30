@@ -1,8 +1,5 @@
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.regex.Pattern;
-
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -14,12 +11,12 @@ public class GrandTheftAutoV {
 	public static void main(String[] args) {
 		String izvele;
 		int izvelesID;
+		int izpildMis=0;
 		boolean unikalsF = false;
 		boolean unikalsT = false;
 		boolean unikalsM = false;
-		String[] darbibas = {"Izvēlies personu", "Dzēst personu", "Personu saraksts", "Sākt misiju", "Aizvērt programmu"};
+		String[] darbibas = {"Izvēlies personu", "Dzēst personu", "Personu saraksts", "Sākt misiju", "Saglabāt info", "Nolasīt info", "Aizvērt programmu"};
 		String[] veidi = {"Frenklins", "Trevors", "Maikls"};
-		String[] atbilde = {"Jā", "Nē"};
 		ArrayList<Object> personas = new ArrayList<>();
 		GalvenaisTels persona = null;
 		do {
@@ -46,13 +43,13 @@ public class GrandTheftAutoV {
 				
 				
 				if(izvelesID == 0) {
-					persona = new GalvenaisTels(izvelesID, ieroci, nauda, masina);
+					persona = new GalvenaisTels(izvelesID, ieroci, nauda, izpildMis ,masina);
 					unikalsF = true;
 				}else if(izvelesID == 1) {
-					persona = new GalvenaisTels(izvelesID, ieroci, nauda, masina);
+					persona = new GalvenaisTels(izvelesID, ieroci, nauda, izpildMis, masina);
 					unikalsT = true;
 				}else{
-					persona = new GalvenaisTels(izvelesID, ieroci, nauda, masina);
+					persona = new GalvenaisTels(izvelesID, ieroci, nauda, izpildMis, masina);
 					unikalsM = true;
 				}
 				personas.add(persona);	
@@ -78,16 +75,38 @@ public class GrandTheftAutoV {
 					JScrollPane sp = new JScrollPane(ta);
 					sp.setVerticalScrollBarPolicy(
 							ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-					JOptionPane.showMessageDialog(ta, sp, "Riteņi",
+					JOptionPane.showMessageDialog(ta, sp, "Saraksts",
 							JOptionPane.PLAIN_MESSAGE);
 				}else{
 					JOptionPane.showMessageDialog(null, "Sarakstā nav neviens cilvēks!", "Brīdinājums", JOptionPane.WARNING_MESSAGE);
 				}
 				break;
+			
 			case 3:
-				//Valter, te izveido case, lai var darīt misijas!
+				if(personas.size()>0) {
+					Misijas.Misija();
+				}else {
+					JOptionPane.showMessageDialog(null, "Jums nav ar ko sākt misiju!", "Brīdinājums", JOptionPane.WARNING_MESSAGE);
+				}
 				break;
+				
 			case 4:
+				if(personas.size()>0) {
+					String str = "Personu skaits: "+personas.size()+"\n_______________________________\n";
+					for(int i = 0; i <personas.size(); i++) {
+						str += ((GalvenaisTels)personas.get(i)).izvadit()+"\n_______________________________\n";
+					}
+					SaveAndLoad.saglabat(str);
+				}else{
+					JOptionPane.showMessageDialog(null, "Sarakstā nav neviens cilvēks!", "Brīdinājums", JOptionPane.WARNING_MESSAGE);
+				}
+				break;
+				
+			case 5:
+				SaveAndLoad.nolasit();
+				break;
+				
+			case 6:
 				JOptionPane.showMessageDialog(null, "Programma apturēta!", "Brīdinājums", JOptionPane.WARNING_MESSAGE);
 				break;
 			}

@@ -2,6 +2,10 @@ import javax.swing.JOptionPane;
 
 public class Frenklins extends GalvenaisTels {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private double TemePalenin;
 	
 	public Frenklins(double TemePalenin) {

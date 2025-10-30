@@ -2,11 +2,14 @@ import javax.swing.JOptionPane;
 
 public class Trevors extends GalvenaisTels {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	double SarkanDumi;
 	
 	public Trevors(double SarkanDumi) {
-		
-		SarkanDumi=10.00;
+		this.SarkanDumi=SarkanDumi();
 	}
 	
 	public double SarkanDumi() {

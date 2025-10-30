@@ -57,9 +57,10 @@ public class PaliguGen {
 		int JaNe;
 		do {
 			int limenis=rand.nextInt(10)+1;
+			int procenti=(int)Math.round((8*(0.3*limenis)));
 			JaNe=JOptionPane.showConfirmDialog(null,""+ 
 					Vardi()+" ar hakošanas līmeni: "+limenis+
-					"\nNaudas daļa ko paņems: "+Math.round((8*(0.3*limenis)))+"%","Hakeru izvēle",JOptionPane.YES_NO_OPTION);
+					"\nNaudas daļa ko paņems: "+procenti+"%","Hakeru izvēle",JOptionPane.YES_NO_OPTION);
 			izvele+=1;
 			if(JaNe==0) {
 				return limenis;

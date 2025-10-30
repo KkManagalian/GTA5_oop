@@ -15,15 +15,9 @@ public class GalvenaisTels implements Serializable, Comparable<GalvenaisTels>{
 	private static final long serialVersionUID = 9222023328378505339L;
 	public static int IzpildMis=0;
 	
-	public GalvenaisTels(int IzpildMis) {
-		GalvenaisTels.IzpildMis=IzpildMis;
-		
-		
-	}
-	
 		private String masina;
 		private int ieroci = 1;
-		private double nauda;
+		public static double nauda;
 		private int izvelesID;
 		public GalvenaisTels() { };
 		
@@ -49,24 +43,26 @@ public class GalvenaisTels implements Serializable, Comparable<GalvenaisTels>{
 			this.masina = masina;
 		}
 		public void setNauda(double nauda) {
-			this.nauda= nauda;
+			GalvenaisTels.nauda= nauda;
 		}
 		public void setIeroci(int ieroci) {
 			this.ieroci = ieroci;
 		}
 		
-		public GalvenaisTels(int izvelesID, int ieroci, double nauda, String masina) {
+		public GalvenaisTels(int izvelesID, int ieroci, double nauda, int IzpildMis, String masina) {
 			this.izvelesID = izvelesID;
 			this.ieroci = ieroci;
-			this.nauda = nauda;
+			GalvenaisTels.nauda = nauda;
 			this.masina = masina;
+			GalvenaisTels.IzpildMis=IzpildMis;
 		}
 		
 		public String izvadit() {
 			return "Personas vārds: "+getIzvelesID()+
 					"\nNaudas daudzums: $"+getNauda()+
 					"\nMašīnas modelis: "+getMasina()+
-					"\nIeroču daudzums: "+getIeroci();
+					"\nIeroču daudzums: "+getIeroci()+
+					"\nIzpildīto misiju skaits: "+IzpildMis;
 		}
 		
 		
