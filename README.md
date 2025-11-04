@@ -4,13 +4,13 @@
 ##Ir iespējams veikt misijas, izvēloties no vairākiem palīgiem, kuri atkarībā no viņu parsmēm, prasīs vairāk vai mazāk naudas.
 
 ### Ir pabeigts:
-### Personu izveidošana [X]
-### Personu dzēšana [x]
-### Personu apskatīšana [x]
-### Misiju veikšana [X]
-### Komandas biedru ģenerēšana un izvēlēšana[X]
-### Programmas beigšana [x]
-### Mašīnu pirkšana [ ]
-### Īpašumu pirkšana [ ]
-### Ieroču pirkšana [ ]
-### Veikto progresu saglabāšana failā [X]
+- [X] Personu Izveide
+- [X] Personu dzēšana
+- [X] Personu apskatīšana
+- [X] Misiju veikšana
+- [X] Komandas biedru ģenerēšana un izvēlēšana
+- [X] Programmas beigšana 
+- [ ] Mašīnu pirkšana
+- [ ] Īpašumu pirkšana
+- [ ] Ieroču pirkšana
+- [X] Veikto progresu saglabāšana failā
