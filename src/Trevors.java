@@ -6,25 +6,26 @@ public class Trevors extends GalvenaisTels {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	double SarkanDumi;
+	static int SarkanDumi;
 	
-	public Trevors(double SarkanDumi) {
-		this.SarkanDumi=SarkanDumi();
+	public Trevors(int SarkanDumi, int izvelesID, int ieroci, double nauda, String masina) {
+		super(izvelesID, ieroci, nauda, masina);
+		Trevors.SarkanDumi=SarkanDumi();
 	}
 	
-	public double SarkanDumi() {
-		return 10.00;
+	public int SarkanDumi() {
+		return 10;
 	}
 	
-	public double ReturnSpeja() {
+	public static int ReturnSpeja() {
 		return SarkanDumi;
 	}
 	
-	public double SpejuStiprin() {
+	public static int SpejuStiprin() {
 		
-		if(SarkanDumi!=30.00) {
+		if(SarkanDumi!=30) {
 			JOptionPane.showMessageDialog(null, "Maksimālais limits spējai atīstīts","Attīstījums",JOptionPane.INFORMATION_MESSAGE);
-			SarkanDumi+=2.00;
+			SarkanDumi+=2;
 		}else {
 			JOptionPane.showMessageDialog(null, "Spēja ir maksimāli attīstīta!","Informācija",JOptionPane.INFORMATION_MESSAGE);
 		}

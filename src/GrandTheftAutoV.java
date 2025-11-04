@@ -8,17 +8,20 @@ import javax.swing.ScrollPaneConstants;
 
 public class GrandTheftAutoV {
 
+	public static int izpildMis=0;
+	
 	public static void main(String[] args) {
 		String izvele;
 		int izvelesID;
-		int izpildMis=0;
 		boolean unikalsF = false;
 		boolean unikalsT = false;
 		boolean unikalsM = false;
-		String[] darbibas = {"Izvēlies personu", "Dzēst personu", "Personu saraksts", "Sākt misiju", "Saglabāt info", "Nolasīt info", "Aizvērt programmu"};
+		String[] darbibas = {"Izvēlies personu", "Dzēst personu", "Personu saraksts", "Spēju stiprināšana", "Sākt misiju", "Saglabāt info", "Nolasīt info", "Aizvērt programmu"};
 		String[] veidi = {"Frenklins", "Trevors", "Maikls"};
 		ArrayList<Object> personas = new ArrayList<>();
-		GalvenaisTels persona = null;
+		Frenklins frenklins = null;
+		Maikls maikls = null;
+		Trevors trevors = null;
 		do {
 			izvele = (String)JOptionPane.showInputDialog(null, "Izvēlies darbību", "Izvēlne", JOptionPane.QUESTION_MESSAGE, null, darbibas, darbibas[0]);
 			if(izvele == null)
@@ -41,23 +44,27 @@ public class GrandTheftAutoV {
 				
 				int ieroci = (int) GalvenaisTels.skaitlaParbaude("Cik būs ieroči?", 1, 59);
 				
+				int speja=0;
+				
 				
 				if(izvelesID == 0) {
-					persona = new GalvenaisTels(izvelesID, ieroci, nauda, izpildMis ,masina);
+					frenklins = new Frenklins(speja, izvelesID, ieroci, nauda ,masina);
 					unikalsF = true;
+					personas.add(frenklins);
 				}else if(izvelesID == 1) {
-					persona = new GalvenaisTels(izvelesID, ieroci, nauda, izpildMis, masina);
+					maikls = new Maikls(speja, izvelesID, ieroci, nauda ,masina);
 					unikalsT = true;
+					personas.add(maikls);
 				}else{
-					persona = new GalvenaisTels(izvelesID, ieroci, nauda, izpildMis, masina);
+					trevors = new Trevors(speja, izvelesID, ieroci, nauda ,masina);
 					unikalsM = true;
-				}
-				personas.add(persona);	
+					personas.add(trevors);
+				}	
 				}
 				break;
 			case 1:
 				if(personas.size()>0) {
-					int ID = GalvenaisTels.personasIzvele(personas);
+					int ID = GalvenaisTels.personasIzveleInt(personas);
 					personas.remove(ID);
 					JOptionPane.showMessageDialog(null, "Persona tika izdzēsta!", "Brīdinājums", JOptionPane.WARNING_MESSAGE);
 				}else {
@@ -66,7 +73,8 @@ public class GrandTheftAutoV {
 				break;
 			case 2:
 				if(personas.size()>0) {
-					String str = "Personu skaits: "+personas.size()+"\n_______________________________\n";
+					String str = "Personu skaits: "+personas.size()+"\n_______________________________\n"+
+								"Izpildīto misiju skaits: "+izpildMis+"\n_______________________________\n";
 					for(int i = 0; i <personas.size(); i++) {
 						str += ((GalvenaisTels)personas.get(i)).izvadit()+"\n_______________________________\n";
 					}
@@ -81,18 +89,47 @@ public class GrandTheftAutoV {
 					JOptionPane.showMessageDialog(null, "Sarakstā nav neviens cilvēks!", "Brīdinājums", JOptionPane.WARNING_MESSAGE);
 				}
 				break;
-			
+				
 			case 3:
 				if(personas.size()>0) {
-					Misijas.Misija();
+					
+					izvele = (String)JOptionPane.showInputDialog(null, "Kurai personai stiprināsiet spēju?", "Izvēlne", JOptionPane.QUESTION_MESSAGE, null, veidi, veidi[0]);
+					if(izvele==null) {
+						break;
+					}
+					switch(izvele) {
+					case "Frenklins":
+						Frenklins.SpejuStiprin();
+						break;
+					case "Maikls":
+						Maikls.SpejuStiprin();
+						break;
+					case "Trevors":
+						Trevors.SpejuStiprin();
+						break;
+						
+					}
+				
 				}else {
-					JOptionPane.showMessageDialog(null, "Jums nav ar ko sākt misiju!", "Brīdinājums", JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Jums nav personas!", "Brīdinājums", JOptionPane.WARNING_MESSAGE);
 				}
 				break;
 				
 			case 4:
 				if(personas.size()>0) {
-					String str = "Personu skaits: "+personas.size()+"\n_______________________________\n";
+					
+					String ID = GalvenaisTels.personasIzveleString(personas);
+					
+					Misijas.Misija(personas, ID);
+				}else {
+					JOptionPane.showMessageDialog(null, "Jums nav ar ko sākt misiju!", "Brīdinājums", JOptionPane.WARNING_MESSAGE);
+				}
+				break;
+				
+			case 5:
+				if(personas.size()>0) {
+					String str = "Personu skaits: "+personas.size()+"\n_______________________________\n"+
+							"Izpildīto misiju skaits: "+izpildMis+"\n_______________________________\n";
 					for(int i = 0; i <personas.size(); i++) {
 						str += ((GalvenaisTels)personas.get(i)).izvadit()+"\n_______________________________\n";
 					}
@@ -102,14 +139,14 @@ public class GrandTheftAutoV {
 				}
 				break;
 				
-			case 5:
-				SaveAndLoad.nolasit();
-				break;
-				
 			case 6:
+					SaveAndLoad.nolasit();
+			break;
+				
+			case 7:
 				JOptionPane.showMessageDialog(null, "Programma apturēta!", "Brīdinājums", JOptionPane.WARNING_MESSAGE);
 				break;
 			}
-		}while(izvelesID != 5);
+		}while(izvelesID != 7);
 	}
 }

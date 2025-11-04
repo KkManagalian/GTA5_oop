@@ -49,7 +49,7 @@ public class SaveAndLoad {
 			JOptionPane.showMessageDialog(ta, sp, "Saglabātie faili", JOptionPane.PLAIN_MESSAGE);
 			
 		}catch(IOException e) {
-			JOptionPane.showMessageDialog(null, "Kļūda ierakstot failā!", "kļūda", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Kļūda lasot failu!", "kļūda", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 	

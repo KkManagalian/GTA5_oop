@@ -13,11 +13,10 @@ public class GalvenaisTels implements Serializable, Comparable<GalvenaisTels>{
 	 * 
 	 */
 	private static final long serialVersionUID = 9222023328378505339L;
-	public static int IzpildMis=0;
-	
+
 		private String masina;
 		private int ieroci = 1;
-		public static double nauda;
+		private double nauda;
 		private int izvelesID;
 		public GalvenaisTels() { };
 		
@@ -39,30 +38,29 @@ public class GalvenaisTels implements Serializable, Comparable<GalvenaisTels>{
 				return "Maikls";
 			}
 		}
+		
 		public void setMasina(String masina) {
 			this.masina = masina;
 		}
 		public void setNauda(double nauda) {
-			GalvenaisTels.nauda= nauda;
+			this.nauda= nauda;
 		}
 		public void setIeroci(int ieroci) {
 			this.ieroci = ieroci;
 		}
 		
-		public GalvenaisTels(int izvelesID, int ieroci, double nauda, int IzpildMis, String masina) {
-			this.izvelesID = izvelesID;
+		public GalvenaisTels(int izvelesID, int ieroci, double nauda, String masina) {
+			this.izvelesID=izvelesID;
 			this.ieroci = ieroci;
-			GalvenaisTels.nauda = nauda;
+			this.nauda = nauda;
 			this.masina = masina;
-			GalvenaisTels.IzpildMis=IzpildMis;
 		}
 		
 		public String izvadit() {
 			return "Personas vārds: "+getIzvelesID()+
 					"\nNaudas daudzums: $"+getNauda()+
 					"\nMašīnas modelis: "+getMasina()+
-					"\nIeroču daudzums: "+getIeroci()+
-					"\nIzpildīto misiju skaits: "+IzpildMis;
+					"\nIeroču daudzums: "+getIeroci();
 		}
 		
 		
@@ -98,14 +96,22 @@ public class GalvenaisTels implements Serializable, Comparable<GalvenaisTels>{
 					}
 				}
 			}
-			static int personasIzvele(ArrayList<Object> personas) {
+			static int personasIzveleInt(ArrayList<Object> personas) {
 				String[] Saraksts = new String[personas.size()];
 				for (int i = 0; i < personas.size(); i++) {
 				Saraksts[i] = (((GalvenaisTels)personas.get(i)).getIzvelesID())+" "
 				+(((GalvenaisTels)personas.get(i)).getNauda())+" $";
 				}
-				String izveletais = (String)JOptionPane.showInputDialog(null, "Izvēlies riteni: ", "Izvēle", JOptionPane.QUESTION_MESSAGE, null, Saraksts, Saraksts[0]);
+				String izveletais = (String)JOptionPane.showInputDialog(null, "Izvēlies: ", "Izvēle", JOptionPane.QUESTION_MESSAGE, null, Saraksts, Saraksts[0]);
 				return Arrays.asList(Saraksts).indexOf(izveletais);
+		}
+			static String personasIzveleString(ArrayList<Object> personas) {
+				String[] Saraksts = new String[personas.size()];
+				for (int i = 0; i < personas.size(); i++) {
+				Saraksts[i] = (((GalvenaisTels)personas.get(i)).getIzvelesID());
+				}
+				String izveletais = (String)JOptionPane.showInputDialog(null, "Izvēlies: ", "Izvēle", JOptionPane.QUESTION_MESSAGE, null, Saraksts, Saraksts[0]);
+				return izveletais;
 		}
 	
 	

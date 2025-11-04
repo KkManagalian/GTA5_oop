@@ -39,7 +39,7 @@ public class Misijas {
 		return 0;
 	}
 	
-	static void Misija(){	
+	static void Misija(ArrayList<Object> personas, String ID){	
 	int izvele,Lim1=0,Lim2=0;
 	String MisIzvele;
 	String[] MisVeids= {"Skaļa","Klusa"};
@@ -63,6 +63,8 @@ public class Misijas {
 		izvele=Integer.parseInt(JOptionPane.showInputDialog(null, "Kuru komandas biedru izvēlēsieties?\n"
 				+ "1 - Braucejs"
 				+ "\n2 - Savejs"));
+		System.out.println(izvele);
+		
 		switch(izvele) {
 		case 1:
 			if(Lim1==0) {
@@ -82,21 +84,35 @@ public class Misijas {
 			break;
 		}
 		}while(KomBiedri.size()!=2);
-		GalvenaisTels.nauda+=Aprekini();
+		
+		Aprekini();
+		GrandTheftAutoV.izpildMis+=1;
 		KomBiedri.clear();
-		GalvenaisTels.IzpildMis+=1;
+		
 		
 	}
 	if(izvele==1) {
 		JOptionPane.showMessageDialog(null, "Bez komandas biedriem misija būs tikai 50% no maksimālās efektivitātes");
-		int Iespeja=rand.nextInt(10)+1;
+		int Iespeja=0;
+		if(ID=="Frenklins") {
+			Iespeja=rand.nextInt(10)+Math.round(Frenklins.ReturnSpeja()/5);
+		}else {
+			if(ID=="Maikls") {
+				Iespeja=rand.nextInt(10)+Math.round(Maikls.ReturnSpeja()/5);
+			}else {
+				if(ID=="Trevors") {
+					Iespeja=rand.nextInt(10)+Math.round(Trevors.ReturnSpeja()/5);
+				}
+			}
+		}
+		int nauda=rand.nextInt(90000)+80000;
 		if(Iespeja==10) {
-			JOptionPane.showMessageDialog(null, "Misija veiksmīgi pabeigta! \nTu paņēmi: "+90000+"$","Rezultāts",JOptionPane.INFORMATION_MESSAGE);
-			GalvenaisTels.nauda+=90000;
-			GalvenaisTels.IzpildMis+=1;
+			JOptionPane.showMessageDialog(null, "Misija veiksmīgi pabeigta! \nTu paņēmi: "+nauda+"$","Rezultāts",JOptionPane.INFORMATION_MESSAGE);
+			
+			
 		}else {
 			JOptionPane.showMessageDialog(null, "Misija tev nesanāca! \nTev priekš slimnīcas sanāca maksāt: "+1000+"$","Rezultāts",JOptionPane.INFORMATION_MESSAGE);
-			GalvenaisTels.nauda-=1000;
+			
 		}
 	}
 	if(izvele==2) {
@@ -129,23 +145,39 @@ public class Misijas {
 					JOptionPane.showMessageDialog(null, "Jums jau ir hakers");
 				}
 				break;
+			default:
+				JOptionPane.showMessageDialog(null, "Nederīga izvēle");
+				break;
 			}
 			}while(KomBiedri.size()!=2);
-			GalvenaisTels.nauda+=Aprekini();
+		
+			Aprekini();
+			GrandTheftAutoV.izpildMis+=1;
 			KomBiedri.clear();
-			GalvenaisTels.IzpildMis+=1;
 			
 		}
 		if(izvele==1) {
 			JOptionPane.showMessageDialog(null, "Bez komandas biedriem misija būs tikai 50% no maksimālās efektivitātes");
-			int Iespeja=rand.nextInt(10)+1;
+			int Iespeja=0;
+			if(ID=="Frenklins") {
+				Iespeja=rand.nextInt(10)+Math.round(Frenklins.ReturnSpeja()/5);
+			}else {
+				if(ID=="Maikls") {
+					Iespeja=rand.nextInt(10)+Math.round(Maikls.ReturnSpeja()/5);
+				}else {
+					if(ID=="Trevors") {
+						Iespeja=rand.nextInt(10)+Math.round(Trevors.ReturnSpeja()/5);
+					}
+				}
+			}
+			int nauda=rand.nextInt(90000)+80000;
 			if(Iespeja==10) {
-				JOptionPane.showMessageDialog(null, "Misija veiksmīgi pabeigta! \nTu paņēmi: "+90000+"$","Rezultāts",JOptionPane.INFORMATION_MESSAGE);
-				GalvenaisTels.nauda+=90000;
-				GalvenaisTels.IzpildMis+=1;
+				JOptionPane.showMessageDialog(null, "Misija veiksmīgi pabeigta! \nTu paņēmi: "+nauda+"$","Rezultāts",JOptionPane.INFORMATION_MESSAGE);
+				
+				
 			}else {
 				JOptionPane.showMessageDialog(null, "Misija tev nesanāca! \nTev priekš slimnīcas sanāca maksāt: "+1000+"$","Rezultāts",JOptionPane.INFORMATION_MESSAGE);
-				GalvenaisTels.nauda-=1000;
+
 			}
 		}
 		if(izvele==2) {

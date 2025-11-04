@@ -6,25 +6,26 @@ public class Frenklins extends GalvenaisTels {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private double TemePalenin;
+	private static int TemePalenin;
 	
-	public Frenklins(double TemePalenin) {
-		this.TemePalenin=TemePalenin();
+	public Frenklins(int TemePalenin, int izvelesID, int ieroci, double nauda, String masina) {
+		super(izvelesID, ieroci, nauda, masina);
+		Frenklins.TemePalenin=TemePalenin();
 	}
 	
-	public double TemePalenin() {
-		return 10.00;
+	public int TemePalenin() {
+		return 10;
 	}
 	
-	public double ReturnSpeja() {
+	public static int ReturnSpeja() {
 		return TemePalenin;
 	}
 	
-	public double SpejuStiprin() {
+	public static int SpejuStiprin() {
 		
-		if(TemePalenin!=30.00) {
+		if(TemePalenin!=30) {
 			JOptionPane.showMessageDialog(null, "Maksimālais limits spējai atīstīts","Attīstījums",JOptionPane.INFORMATION_MESSAGE);
-			TemePalenin+=2.00;
+			TemePalenin+=2;
 		}else {
 			JOptionPane.showMessageDialog(null, "Spēja ir maksimāli attīstīta!","Informācija",JOptionPane.INFORMATION_MESSAGE);
 		}
